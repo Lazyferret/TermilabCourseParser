@@ -1,14 +1,13 @@
 import random
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-from selenium.webdriver.support.wait import WebDriverWait
 import json
 import time
-import sqlite3
-import itertools
+
+
 def human_type(element, text):
     for char in text:
-        time.sleep(random.randint(1,10)/15) #fixed a . instead of a ,
+        time.sleep(random.randint(1, 10) / 15)
         element.send_keys(char)
 
 
@@ -16,10 +15,11 @@ with open("logpass.txt", mode='r') as f:
     login, password = f.read().split()
 
 options = webdriver.ChromeOptions()
-try:
-    driver = webdriver.Chrome(executable_path=r'chromedriver.exe')
-except FileNotFoundError:
-    driver = webdriver.Chrome()
+#try:
+#    driver = webdriver.Chrome(executable_path=r'chromedriver.exe')
+#except FileNotFoundError:
+options.add_argument('--headless')
+driver = webdriver.Chrome(options=options)
 driver.get("https://lms.termilab.ru/login")
 time.sleep(5)
 email_input = driver.find_element(By.ID, "email")
@@ -44,7 +44,8 @@ for course in courses:
     time.sleep(3)
     chapter_accordion = driver.find_element(By.ID, "ui-accordion-accordion-panel-1")
     chapters = chapter_accordion.find_elements(By.TAG_NAME, "li")
-    chapters_hrefs = [[chapter.find_element(By.TAG_NAME, "a").get_attribute("href"),chapter.find_element(By.TAG_NAME, "a").text.strip()] for chapter in chapters]
+    chapters_hrefs = [[chapter.find_element(By.TAG_NAME, "a").get_attribute("href"),
+                       chapter.find_element(By.TAG_NAME, "a").text.strip()] for chapter in chapters]
     for chapter, chapter_name in chapters_hrefs:
         chapter_data = {}
         driver.get(chapter)
