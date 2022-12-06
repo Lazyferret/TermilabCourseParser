@@ -11,9 +11,9 @@ TermilabCourseParser – скрипт для сайта termilab, позволя
 - ffmpeg
 
 ### Установка
-git clone https://github.com/Lazyferret/TermilabCourseParser.git
-pip install -r requirements.txt
+- git clone https://github.com/Lazyferret/TermilabCourseParser.git
+- pip install -r requirements.txt
 
 ### Установка для Docker
-git clone https://github.com/Lazyferret/TermilabCourseParser.git
-docker build -t termilab:v1 .
+- git clone https://github.com/Lazyferret/TermilabCourseParser.git
+- docker build -t termilab:v1 .
