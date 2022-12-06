@@ -1,3 +1,4 @@
+<img src="https://github.com/Lazyferret/TermilabCourseParser/workflows/syntax-check/badge.svg">
 # Проект " TermilabCourseParser"
 
 ### Описание проекта

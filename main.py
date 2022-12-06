@@ -1,8 +1,9 @@
 import random
-from selenium import webdriver
-from selenium.webdriver.common.by import By
 import json
 import time
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+
 
 
 def human_type(element, text):
@@ -51,6 +52,7 @@ for course in courses:
         driver.get(chapter)
         time.sleep(5)
         headers = [i.text.strip() for i in driver.find_elements(By.CLASS_NAME, "problem-header")]
+        cl_name = "link_lti_new_window"
         hrefs = [i.get_attribute("href") for i in driver.find_elements(By.CLASS_NAME, "link_lti_new_window")]
         for module in range(len(headers) - 1):
             # chapter_data[headers[module].text.strip()] = hrefs[module].get_attribute("href")
